@@ -1,8 +1,15 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
-// In development, requests to /api are forwarded to the Express server.
 export default defineConfig({
   plugins: [react()],
-  server: { proxy: { '/api': 'http://localhost:5000' } },
-});
+
+  // GitHub Pages base path
+  base: '/tiffly-mern/',
+
+  // Production build settings
+  build: {
+    outDir: '../docs',
+    emptyOutDir: true
+  }
+})
